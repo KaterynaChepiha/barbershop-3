@@ -95,7 +95,6 @@ body {
     top: 0;
     width: 100%;
     z-index: 100;
-    /* background-color: #191C26; */
 }
 
 .nav {
@@ -202,6 +201,68 @@ body {
 .list .networks:hover,
 .list .networks:focus {
     color: #FF6C00;
+}
+
+.backdrop {
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1), visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 528px;
+    height: 581px;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+}
+
+.backdrop.is-hidden .modal {
+    transform: translate(-50%, -50%) scale(1.25);
+    opacity: 0;
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1), opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-close {
+    display: block;
+    margin-left: auto;
+    margin-top: 8px;
+    margin-right: 8px;
+    padding: 0;
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
 }
 
 /* Section Hero */
@@ -704,6 +765,13 @@ margin-left: auto;
     background-color: #FFFFFF;
     border-radius: 50%;
     transition: fill 250ms linear;
+    color: #303030;
+}
+
+
+
+.social-list-icon {
+    fill: currentColor;
 }
 
 .masters-link:hover,
@@ -738,6 +806,37 @@ margin-left: auto;
     background-color: #303030;
 }
 
+.works-descr {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 25px 25px;
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.56;
+    color: #FFFFFF;
+    background-color: rgba(255, 108, 0, 0.7);
+
+    transform: translateY(100%);
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(8px);
+}
+
+.card-set-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-set-item:hover .works-descr,
+.card-set-item:focus .works-descr {
+    transform: translateY(0);
+}
+
 /* Section Contacts */
 .contacts {
     background: #191C26;
@@ -758,14 +857,27 @@ margin-left: auto;
     color: #FFFFFF;
 }
 
+
+.icon-contact {
+    margin-right: 16px;
+}
+
 .adress,
 .tel,
 .mail {
+    display: flex;
+    align-items: center;
     line-height: 1.67;    
     letter-spacing: 0.02em;
     color: #9DA4BD;
     font-style: normal;
     transition: color 250ms linear;
+    stroke: #9DA4BD;
+}
+
+.icon-contact {
+    fill: currentColor;
+    stroke: currentColor;
 }
 
 .adress:hover, 
